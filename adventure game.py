@@ -1,12 +1,13 @@
 from time import sleep
 
+# Initialises the statistics at the start of the first game play
 Points = 10
 Strength = 0
 Speed = 0
 Charisma = 0
 print("Hello! Welcome to Shadows of the Forgotten Path")
 
-#Strength calculation
+# Strength calculation
 def strengthFunc(Strength,Points):
     while Strength == 0:
         try:
@@ -25,7 +26,7 @@ def strengthFunc(Strength,Points):
             break
     return Points - Strength
 
-#Speed Calculation
+# Speed Calculation
 def speedFunc(Speed,PointsA):
     while Speed == 0:
         try:
@@ -44,7 +45,7 @@ def speedFunc(Speed,PointsA):
             break
     return PointsA - Speed
 
-#Function to reset statistics
+# Function to reset statistics
 def resetStats():
     Points = 10
     Strength = 0
@@ -74,10 +75,11 @@ def storyStart():
     print("Thank you", name + ", your story begins now...\n\n")
     return name
 
+# First bit of story, and the first three choices to choose
 def theFirstChoice():
     print("There are three paths before you, each one partially hidden by the mist. Which path do you take?\n A) Left path, which is overgrown, but faint whispers come from this direction\n B) Middle Path, which looks recently used, but with strange, non-human footprints visible\n C) Right Path, being rocky and treacherous, with a faint light flickering in the distance")
 
-#First sequence of story, to clean up code
+# First sequence of story, to clean up code
 def introStory():
     print("You awaken in a dense, mist-covered forest with a sharp pain in your leg. The forst is eerily silent, with towering trees and unerbrush so thick you can barely see your own hands.\n")
     sleep(6)
@@ -91,6 +93,8 @@ def introStory():
 
 # Function for the first event
 def choice0(Sel1, name):
+
+    # Event 1, Left Path
     if Sel1 == 'a':
         Sel1A = None
 
@@ -110,7 +114,7 @@ def choice0(Sel1, name):
                 break
             else:
                 print('That is not a valid selection.\n')
-
+        # 1, Left Path, Read Diary
         if Sel1A == 'a':
             Sel1AA = None
             print('As you delve deeper into the diary, you discover that the author was a member of a cult, that performed a ritual in the forest\n')
@@ -124,32 +128,36 @@ def choice0(Sel1, name):
                     break
                 else:
                     print('That is not a valid selection.\n')
+            # 1, Left, Diary, Fight
             if Sel1AA == 'a':
                 if Strength >= 5:
                     print("You fight off the creature, and win. Once the shadow monster is down, you run away, following the path further into the forest.")
-                    return
+                    return False
                 elif Strength <= 4:
                     Go = input("You attempt to fight off the monster, but you're too weak. This marks an end to your journey. Do you wish to play again? (y/n)").lower()
                     if Go == 'y':
                         gameGo()
                     else:
                         exit()
+            # 1, Left, Diary, Run
             elif Sel1AA == 'b':
                 if Speed >= 5:
                     print("You sprint as fast as you can along the 'path', and make it away. The footsteps of the monster can no longer be heard.")
-                    return
+                    return False
                 elif Speed <= 4:
                     Go = input("You attempt to sprint away, but you're too slow and the monster catches up to you. This marks an end to your journey. Do you wish to play again? (y/n)").lower()
                     if Go == 'y':
                         gameGo()
                     else:
                         exit()
+        # 1, Left Path, Run Away
         elif Sel1A == 'b':
             print("You drop the diary and run away. The whispers were giving you the creeps anyways.")
             sleep(6)
             print("The forest seems to fight you with every step, roots ane vines grabbing at your feet, but you manage to escape, and continue down the path.")
             return
 
+    # Event 1, Middle Path
     elif Sel1 == 'b':
         Sel1B = None
 
@@ -169,7 +177,7 @@ def choice0(Sel1, name):
                 break
             else:
                 print('That is not a valid selection.\n')
-
+        # 1, Middle path, Cave Entry
         if Sel1B == 'a':
             print("You cautiously approach the cave, and the creature steps aside to let you pass.\n")
             sleep(5)
@@ -178,7 +186,8 @@ def choice0(Sel1, name):
             print("You pick up the weapon, and continue further into the cave, eventually seeing light that leads to an exit, another clearing.\n")
             sleep(6)
             print("The creatures motives remain unclear, but you sense it wants you to succeed in whatever lies ahead.\n")
-            return
+            return True
+        # 1, Middle Path, Back Away
         elif Sel1B == 'b':
             print("As you turn, and back away, the creature doesn't pursue you, but you feel its eyes on you as you retreat.\n")
             sleep(6)
@@ -187,12 +196,81 @@ def choice0(Sel1, name):
             print("After awhile, you make it to a clearing with no sign of the creature. It appears safe to continue your journey\n")
             sleep(6)
             print("Though, you do wonder if you missed a crucial opportunity by not trusting the creature...")
-            return
+            return False
 
+    # Event 1, Right Path
     elif Sel1 == 'c':
-        print('balls')
-        return 'c'
+        Sel1C = None
 
+        print("You limp towards the right path, where the ground is rocky and uneven, and you begin to wonder if you're even up to taking this path\n")
+        sleep(6)
+        print("As you stumble over rocks, the light you saw earlier becomes brighter, and you realise it's coming from an old, abandoned campsite\n")
+        sleep(6)
+        print("The campsite is deserted, but it shows signs of recent use- a fire pit with embers still glowing, a torn tent and scattered supplies\n")
+        sleep(6)
+        print("Among the supplies you find bandages and a small knife, which you quickly pocket.\nYou also discover a bloodstained journal, its pages filled with hurried, almost frantic writing\n")
+        sleep(7)
+        print("You sit down by the fire pit, and start reading the journal. Its entries detail a struggle against an unseen force, one the writer couldn't escape...\n")
+        sleep(6)
+        print("This place seems sketchy, especially the bloodstained journal's entries, but there may be more to uncover. Do you:\n A) Take the supplies and move on\n B) Stay and Investigate Further\n")
+
+        while Sel1C != 'a' or Sel1C != 'b':
+            Sel1C = input("What is your selection? (A/B)").lower()
+            if Sel1C == 'a' or Sel1C == 'b':
+                break
+            else:
+                print('That is not a valid selection.\n')
+
+        # 1, Right Path, Flee Campsite
+        if Sel1C == 'a':
+            print("You bandage up your injured leg, the relief helping you to think more clearly\n")
+            sleep(5)
+            print("Armed with a knife, you feel slightly more prepared for whatever lies ahead\n")
+            sleep(5)
+            print("You leavge the camp behind, but the journal's words stick with you, making you more cautious and suspicious of anything, or anyone you might encounter next\n")
+            return True
+
+        # 1, Right Path, Investigae Campsite
+        elif Sel1C == 'b':
+            Sel1CA = None
+            print("As you continue searching, you find more signs of a struggle- a torn piece of clothing, scratches on the rocks, and a broken compass\n")
+            sleep(6)
+            print("Just as you're about to give up, you notice something buried in the dirt near the fire pit.\n Digging it up reveals it to be a small, locked box\n")
+            sleep(6)
+            print("Without the key, you can't open it, but you decide to take it with you anyways\n")
+            sleep(6)
+            print("However the delay has cost you precious time, and as you start to leave, you hear the sound of something approaching through the trees-\nYou're not alone anymore\n")
+            sleep(7)
+            print("You're unsure of what it is, but it may be dangerous. You can either:\n A) Fight the entity\n B) Flee from the entity\n")
+
+            while Sel1CA != 'a' or Sel1CA != 'b':
+                Sel1CA = input("What is your selection? (A/B)").lower()
+                if Sel1CA == 'a' or Sel1CA == 'b':
+                    break
+                else:
+                    print('That is not a valid selection.\n')
+
+            if Sel1CA == 'a':
+                if Strength >= 5:
+                    print("You fight off the entity, and win. Once the unknown entity is down, you run away, following the path further into the forest, coming to a clearing.")
+                    return True
+                elif Strength <= 4:
+                    Go = input("You attempt to fight off the entity, but you're too weak. This marks an end to your journey. Do you wish to play again? (y/n)").lower()
+                    if Go == 'y':
+                        gameGo()
+                    else:
+                        exit()
+            # 1, Left, Diary, Run
+            elif Sel1CA == 'b':
+                if Speed >= 5:
+                    print("You sprint as fast as you can along the path, and make it away. The rustling of the entity can no longer be heard. You come across a clearing.")
+                    return True
+                elif Speed <= 4:
+                    Go = input("You attempt to sprint away, but you're too slow and the entity catches up to you. This marks an end to your journey. Do you wish to play again? (y/n)").lower()
+                    if Go == 'y':
+                        gameGo()
+                    else:
+                        exit()
 
 
 # GameCode
@@ -208,7 +286,7 @@ def gameGo():
         else:
             print('That is not a valid selection.\n')
 
-    Event1 = choice0(Sel1, name)
-    print(Event1)
+    Weapon = choice0(Sel1, name)
+    print(Weapon)
 
 gameGo()
