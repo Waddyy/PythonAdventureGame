@@ -2,9 +2,9 @@ from time import sleep
 
 # Initialises the statistics at the start of the first game play
 Points = 10
-Strength = 0
-Speed = 0
-Charisma = 0
+Strength = None
+Speed = None
+Charisma = None
 TextSpeed = 0
 
 print("Hello! Welcome to Shadows of the Forgotten Path")
@@ -18,9 +18,6 @@ def strengthFunc(Points,TextSpeed):
         except ValueError:
             print("Incorrect value, please input a number between 0 and 8")
             continue
-        # if Strength >= 8 or Strength <=0:
-            # print("Incorrect value, please input a number between 0 and 8")
-            # continue
         else:
             sleep(1 + TextSpeed)
             print("Your character's strength is", Strength)
@@ -38,9 +35,6 @@ def speedFunc(PointsA,TextSpeed):
         except ValueError:
             print("Incorrect value, please input a number between 0 and 8")
             continue
-        # if Speed >= 8 or Speed <=0:
-            # print("Incorrect value, please input a number between 0 and 8")
-            # continue
         else:
             sleep(1 + TextSpeed)
             print("Your character's speed is", Speed)
@@ -88,7 +82,7 @@ def storyStart(TextSpeed):
     PointsB, Speed = speedFunc(PointsA, TextSpeed)
     sleep(1 + TextSpeed)
     print("Thank you", name + ", your story begins now...\n\n")
-    return name
+    return name, Speed, Strength
 
 # First bit of story, and the first three choices to choose
 def theFirstChoice():
@@ -131,6 +125,7 @@ def choice0(Sel1, name, Strength, Speed, TextSpeed):
                 print('That is not a valid selection.\n')
         # 1, Left Path, Read Diary
         if Sel1A == 'a':
+            print(Strength, Speed)
             Sel1AA = None
             print('As you delve deeper into the diary, you discover that the author was a member of a cult, that performed a ritual in the forest\n')
             sleep(5 + TextSpeed)
@@ -144,7 +139,7 @@ def choice0(Sel1, name, Strength, Speed, TextSpeed):
                 else:
                     print('That is not a valid selection.\n')
             # 1, Left, Diary, Fight
-            if Sel1AA == 'a':
+            if Sel1AA == 'b':
                 if Strength >= 5:
                     print("You fight off the creature, and win. Once the shadow monster is down, you run away, following the path further into the forest.")
                     return False
@@ -155,7 +150,7 @@ def choice0(Sel1, name, Strength, Speed, TextSpeed):
                     else:
                         exit()
             # 1, Left, Diary, Run
-            elif Sel1AA == 'b':
+            elif Sel1AA == 'a':
                 if Speed >= 5:
                     print("You sprint as fast as you can along the 'path', and make it away. The footsteps of the monster can no longer be heard.")
                     return False
@@ -290,7 +285,7 @@ def choice0(Sel1, name, Strength, Speed, TextSpeed):
 
 # GameCode
 def gameGo():
-    name = storyStart(TextSpeed)
+    name, Speed, Strength = storyStart(TextSpeed)
 
     introStory(TextSpeed)
     theFirstChoice()
