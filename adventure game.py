@@ -10,7 +10,8 @@ TextSpeed = 0
 print("Hello! Welcome to Shadows of the Forgotten Path")
 
 # Strength calculation
-def strengthFunc(Strength,Points,TextSpeed):
+def strengthFunc(Points,TextSpeed):
+    Strength = 0
     while Strength == 0:
         try:
             Strength = int(input("What is your character's strength? (0-8)" ))
@@ -26,10 +27,11 @@ def strengthFunc(Strength,Points,TextSpeed):
             sleep(2 + TextSpeed)
             print('You have,', Points - Strength, 'points left\n')
             break
-    return Points - Strength
+    return Points - Strength, Strength
 
 # Speed Calculation
-def speedFunc(Speed,PointsA,TextSpeed):
+def speedFunc(PointsA,TextSpeed):
+    Speed = 0
     while Speed == 0:
         try:
             Speed = int(input("What is your character's speed? (0-8)" ))
@@ -45,7 +47,7 @@ def speedFunc(Speed,PointsA,TextSpeed):
             sleep(2 + TextSpeed)
             print('You have,', PointsA - Speed, 'points left\n')
             break
-    return PointsA - Speed
+    return PointsA - Speed, Speed
 
 # Function to reset statistics
 def resetStats():
@@ -54,6 +56,7 @@ def resetStats():
     Speed = 0
     Charisma = 0
     Name = None
+    txtspeed = 0
 
 # Menu, Make it a function
 def storyStart(TextSpeed):
@@ -63,7 +66,8 @@ def storyStart(TextSpeed):
     name = input("Please enter your character's name here: ")
     print("\nHi", name + ", nice to meet you. Here we will choose your text speed, and input your character's stats.\n")
     sleep(3)
-    txtspd = input("How quickly should text appear on the screen. The slow option will add 2 extra seconds between text appearing.\n A) Slow\n B) Fast")
+    print("How quickly should text appear on the screen. The slow option will add 2 extra seconds between text appearing.\n A) Slow\n B) Fast")
+    txtspd = 0
     while txtspd != 'a' or txtspd != 'b':
         txtspd = input("What is your selection? (A/B)").lower()
         if txtspd == 'a' or txtspd == 'b':
@@ -80,8 +84,8 @@ def storyStart(TextSpeed):
     sleep(4 + TextSpeed)
     print("e.g if you strength is less than 4 you won't be able to overpower someone.\n")
     sleep(4 + TextSpeed)
-    PointsA = strengthFunc(Strength, Points, TextSpeed)
-    PointsB = speedFunc(Speed, PointsA, TextSpeed)
+    PointsA, Strength = strengthFunc(Points, TextSpeed)
+    PointsB, Speed = speedFunc(PointsA, TextSpeed)
     sleep(1 + TextSpeed)
     print("Thank you", name + ", your story begins now...\n\n")
     return name
@@ -287,6 +291,7 @@ def choice0(Sel1, name, Strength, Speed, TextSpeed):
 # GameCode
 def gameGo():
     name = storyStart(TextSpeed)
+
     introStory(TextSpeed)
     theFirstChoice()
     Sel1 = None
