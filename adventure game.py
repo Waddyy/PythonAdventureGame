@@ -366,6 +366,8 @@ def choice2(Sel2, name, Strength, Speed, TextSpeed, Weapon):
             print("Getting closer, it appears its the same clearing as before, exactly what you were aiming to find\n")
             sleep(4 + TextSpeed)
             print("Its sense of familiarity helps clear your mind ever so slightly, allowing you to think clearer\n")
+            sleep(4 + TextSpeed)
+            print("Following a rest, and your mind being cleared, you notice another, smaller etry ")
             return
 
         elif Sel2B == 'b':
@@ -395,7 +397,74 @@ def choice2(Sel2, name, Strength, Speed, TextSpeed, Weapon):
 
     # Event 2, Confront
     if Sel2 == 'c':
-        print()
+        print("'Forget this,' you think. 'There is no way out of this, I have to confront these fears.'\n")
+        sleep(4 + TextSpeed)
+        print("Rather than going down an obvious path, you turn around, ready to take on what is hunting you\n")
+        sleep(4 + TextSpeed)
+        print("Suddenly, the mist clears, and a small opening becomes visible in the treeline. It appears that the forest reacted to your resolve\n")
+        sleep(5 + TextSpeed)
+        print("Stepping through the opening, a tight path winds around the thick, tall trees\n")
+        sleep(4 + TextSpeed)
+        print("After what seems like hours, you come across a cave, with an unusual opening at the top, allowing the light to stream over a tall, white rock\n")
+        sleep(5 + TextSpeed)
+        print("But this beautiful sight doesn't stay long, as the cave goes dark, and the rock vanishes\n")
+        sleep(4 + TextSpeed)
+        print("In the place of the rock, two dark amber eyes appear, and a feeling of guilt, fear, and weakness washes over you\n")
+        sleep(4 + TextSpeed)
+        print("This feeling feels similar to you, as if this was the incarnate of the failure of your ritual\n")
+        sleep(4 + TextSpeed)
+        print("While this creature doesn't speak, you sense its intent, that of which to reclaim you from the ritual\n")
+        sleep(4 + TextSpeed)
+        print("If you have a weapon on you from before, you may A) fight. If not, you can either B) Accept your fate, or C) Attempt communcation with the monster\n")
+
+        Sel2C = None
+        while Sel2C != 'a' or Sel2C != 'b':
+            Sel2C = input("What is your selection? (A/B/C) ").lower()
+            if Sel2C == 'a' or Sel2C == 'b':
+                break
+            else:
+                print('That is not a valid selection.\n')
+
+        if Sel2C == 'a':
+            ancientblade = Weapon
+            if ancientblade == True:
+                print("You reach into your pocket and pull out the blade you picked up from before, and slay the monster.\nThe whispers stop, and your leg's pain slowly dies away.\nYou move forward's towards the white rock..\n")
+                return
+            elif ancientblade == False:
+                print("There's isn't anything you can do. You attempt to overpower the entity, but it's no use.\nYou lose, and everything goes black. Maybe this is destined to happen over and over?\nThis does not award you a proper ending, but if you play again you might win.\n")
+                go = input('Do you wish to play again? (Y/N) ').lower()
+                if go == 'y':
+                    gameGo()
+                else:
+                    exit()
+
+        elif Sel2C == 'b':
+            print("You believe this entity is never going to give up, afterall, you've felt its presence your whole tenure in the forest.\nThe only way forwards for you, is to accept this fate, and sucumb to the entity's control\n")
+            sleep(6 + TextSpeed)
+            print("A wave of darkness washes over you, and then everything goes black. This awards you the *ACCEPTANCE* ending.\n")
+            sleep(4 + TextSpeed)
+            go = input('Do you wish to play again? (Y/N) ').lower()
+            if go == 'y':
+                gameGo()
+            else:
+                exit()
+
+        elif Sel2C == 'c':
+            print("All previous attempts to run, or confront haven't gotten rid of this entity, so you decide to attempt communication with it\n")
+            sleep(4 + TextSpeed)
+            print("You open your mouth, and try to speak, but the words don't come out. You're almost choking on them, stuck in your throat\n")
+            sleep(4 + TextSpeed)
+            print("At the blink of an eye, darkness completely clouds your vision, and you feel light headed\n")
+            sleep(4 + TextSpeed)
+            print("You fall to the ground, and those two, bright eyes appear over you, standing out from the darkness, then, disappearing")
+            sleep(4 + TextSpeed)
+            print("You slip into an eternal sleep, marking the end of your journey through the forest\n")
+            go = input('Do you wish to play again? (Y/N) ').lower()
+            if go == 'y':
+                gameGo()
+            else:
+                exit()
+
 
 
 # GameCode
@@ -426,6 +495,7 @@ def gameGo():
             print('That is not a valid selection.\n')
 
     choice2(Sel2, name, Strength, Speed, TextSpeed, Weapon)
+    print("work in progress! ending is coming very soon")
     return
 
 # Game is go
