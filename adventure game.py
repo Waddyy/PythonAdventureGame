@@ -92,6 +92,10 @@ def theFirstChoice():
 def theSecondChoice():
     print("You've got a few courses of actions to overcome this flashes of memory. You can either:\n A) Force yourself to recall what happened, despite the pain and fear that comes with the memories\n B) Push the memories away, and focus on finding a way out of the forest\n C) Confront whatever is hunting you, and causing these overwhelming memories to haunt you\n")
 
+# The third, and final part of the story, only two choices to choose
+def theThirdChoice():
+    print("There's only two options now, you can either:\n A) Finish the ritual, sacrificing yourself to the forest, ending your story forever\n B) Stay in the forest, living with the fact you'll never know what the ritual was about, and why you were the sacrifice\n")
+
 # First sequence of story, to clean up code
 def introStory(TextSpeed):
     print("You awaken in a dense, mist-covered forest with a sharp pain in your leg. The forest is eerily silent, with towering trees and underbrush so thick you can barely see your own hands.\n")
@@ -112,6 +116,14 @@ def secondEventIntro(TextSpeed):
     sleep(4 + TextSpeed)
     print("You take a seat on a rock in the clearing, light streaming into your eyes")
     sleep(4 + TextSpeed)
+
+# Third sequence of story, to clean up code
+def thirdEventIntro(TextSpeed):
+    print("You step forwards, into the cave, and towards the centre piece, the white shining rock\n")
+    sleep(4 + TextSpeed)
+    print("The closer you get, the larger it seems to grow, stretching far upwards in the large, open cave\n")
+    sleep(4 + TextSpeed)
+    print("A magical presence can be felt in the cave alongside you, as if out of this world. It doesn't seem like there is much way forward without making an important decision- one that will change your life forever...\n")
 
 # Function for the first event
 def choice0(Sel1, name, Strength, Speed, TextSpeed):
@@ -160,6 +172,8 @@ def choice0(Sel1, name, Strength, Speed, TextSpeed):
                     if Go == 'y':
                         gameGo()
                     else:
+                        print("Thanks for playing!")
+                        sleep(3)
                         exit()
             # 1, Left, Diary, Run
             elif Sel1AA == 'a':
@@ -171,6 +185,8 @@ def choice0(Sel1, name, Strength, Speed, TextSpeed):
                     if Go == 'y':
                         gameGo()
                     else:
+                        print("Thanks for playing!")
+                        sleep(3)
                         exit()
         # 1, Left Path, Run Away
         elif Sel1A == 'b':
@@ -281,6 +297,8 @@ def choice0(Sel1, name, Strength, Speed, TextSpeed):
                     if Go == 'y':
                         gameGo()
                     else:
+                        print("Thanks for playing!")
+                        sleep(3)
                         exit()
             # 1, Left, Diary, Run
             elif Sel1CA == 'b':
@@ -292,6 +310,8 @@ def choice0(Sel1, name, Strength, Speed, TextSpeed):
                     if Go == 'y':
                         gameGo()
                     else:
+                        print("Thanks for playing!")
+                        sleep(3)
                         exit()
 
 # Second Sequence of the story
@@ -312,7 +332,7 @@ def choice2(Sel2, name, Strength, Speed, TextSpeed, Weapon):
         sleep(3 + TextSpeed)
         print("The knowledge of this sacrifice weighs heavily on you, but it gives you a sense of purpose. You must find the source of the ritual, and either complete it or break it to free yourself\n")
         sleep(6 + TextSpeed)
-        print("Do you either:\n A) Seek redemption, finding the altar and attempting to reverse the ritual\n B)Accept your Fate, believing that there is no escape from the curse\n")
+        print("Do you either:\n A) Seek redemption, finding the altar and attempting to reverse the ritual\n B) Accept your Fate, believing that there is no escape from the curse\n")
 
         Sel2A = None
         while Sel2A != 'a' or Sel2A != 'b':
@@ -328,7 +348,7 @@ def choice2(Sel2, name, Strength, Speed, TextSpeed, Weapon):
         elif Sel2A == 'b':
             print("You decide that there is no escape from the curse, and that it is fate for this sequence of events to repeat for eternity.\n")
             sleep(3 + TextSpeed)
-            go = input('This awards you the *FATALIST* ending. Do you wish to play again? (Y/N) ').lower()
+            go = input('This awards you the *FATALIST* ending 1/5. Do you wish to play again? (Y/N) ').lower()
             if go == 'y':
                 gameGo()
             else:
@@ -374,7 +394,7 @@ def choice2(Sel2, name, Strength, Speed, TextSpeed, Weapon):
             ancientblade = Weapon
             outcome1 = None
             if ancientblade == True:
-                outcome1 = "You reach into your pocket and pull out the blade you picked up from before, and slay the monster.\nThe whispers stop, and your leg's pain slowly dies away. Maybe the stuff about it being a failed ritual was just from this mind altering entity?\nThis awards you the *VICTOR* ending.\n"
+                outcome1 = "You reach into your pocket and pull out the blade you picked up from before, and slay the monster.\nThe whispers stop, and your leg's pain slowly dies away. Maybe the stuff about it being a failed ritual was just from this mind altering entity?\nThis awards you the *VICTOR* ending (2/5).\n"
             elif ancientblade == False:
                 outcome1 = "There's isn't anything you can do. You attempt to overpower the entity, but it's no use.\nYou lose, and everything goes black. Maybe this is destined to happen over and over?\nThis does not award you a proper ending, but if you play again you might win.\n"
             print("It's all getting too much for you, so a rest is what you need right now. You find a rock and sit down...\n")
@@ -393,6 +413,8 @@ def choice2(Sel2, name, Strength, Speed, TextSpeed, Weapon):
             if go == 'y':
                 gameGo()
             else:
+                print("Thanks for playing!")
+                sleep(3)
                 exit()
 
     # Event 2, Confront
@@ -436,17 +458,21 @@ def choice2(Sel2, name, Strength, Speed, TextSpeed, Weapon):
                 if go == 'y':
                     gameGo()
                 else:
+                    print("Thanks for playing!")
+                    sleep(3)
                     exit()
 
         elif Sel2C == 'b':
             print("You believe this entity is never going to give up, afterall, you've felt its presence your whole tenure in the forest.\nThe only way forwards for you, is to accept this fate, and sucumb to the entity's control\n")
             sleep(6 + TextSpeed)
-            print("A wave of darkness washes over you, and then everything goes black. This awards you the *ACCEPTANCE* ending.\n")
+            print("A wave of darkness washes over you, and then everything goes black. This awards you the *ACCEPTANCE* ending (3/5).\n")
             sleep(4 + TextSpeed)
             go = input('Do you wish to play again? (Y/N) ').lower()
             if go == 'y':
                 gameGo()
             else:
+                print("Thanks for playing!")
+                sleep(3)
                 exit()
 
         elif Sel2C == 'c':
@@ -463,9 +489,44 @@ def choice2(Sel2, name, Strength, Speed, TextSpeed, Weapon):
             if go == 'y':
                 gameGo()
             else:
+                print("Thanks for playing!")
+                sleep(3)
                 exit()
 
-
+# Third and final sequence of story, these is the last two endings
+def finalEnding(Sel3, name, Strength, Speed, TextSpeed, Weapon):
+    if Sel3 == 'a':
+        print("You spot a small blade in the corner, and you walk towards it, picking it up\n")
+        sleep(4 + TextSpeed)
+        print("It's cold to the touch, slightly rusted but still razor sharp\n")
+        sleep(4 + TextSpeed)
+        print("With the blade in hand, you move towards the shining rock and reach out a hand to make a connection with the magical presence\n")
+        sleep(4 + TextSpeed)
+        print("You swiftly take your own life. All spirits fade away in the forest, the mist clears and the rock stops glowing.\n")
+        sleep(4 + TextSpeed)
+        print("This awards you the *MARTYR* ending (4/5)\n")
+        go = input('Do you wish to play again? (Y/N) ').lower()
+        if go == 'y':
+            gameGo()
+        else:
+            print("Thanks for playing!")
+            sleep(3)
+            exit()
+    elif Sel3 == 'b':
+        print("You turn around, exiting the cave in a hurry, not even giving a last glance to the shining rock\n")
+        sleep(4 + TextSpeed)
+        print("The only way forwards for you to live, is to share your life with the guilt, and wonder of what could be if you finish the ritual, or why you were there in the first place\n")
+        sleep(5 + TextSpeed)
+        print("Stepping back through the thick forest, you return to the first fork in the road, and set up a small camp\n")
+        sleep(4 + TextSpeed)
+        print("You proceed to live out the rest of your life, trapped, and isolated in the forest. This awards you the *ISOLATION* ending.\n")
+        go = input('Do you wish to play again? (Y/N) ').lower()
+        if go == 'y':
+            gameGo()
+        else:
+            print("Thanks for playing!")
+            sleep(3)
+            exit()
 
 # GameCode
 def gameGo():
@@ -495,8 +556,16 @@ def gameGo():
             print('That is not a valid selection.\n')
 
     choice2(Sel2, name, Strength, Speed, TextSpeed, Weapon)
-    print("work in progress! ending is coming very soon")
-    return
 
+    thirdEventIntro(TextSpeed)
+    theThirdChoice()
+    Sel3 = None
+    while Sel3 != 'a' or Sel3 != 'b':
+        Sel3 = input("What is your selection? (A/B)").lower()
+        if Sel3 == 'a' or Sel3:
+            break
+        else:
+            print('That is not a valid selection.\n')
+    finalEnding(Sel3, name, Strength, Speed, TextSpeed, Weapon)
 # Game is go
 gameGo()
